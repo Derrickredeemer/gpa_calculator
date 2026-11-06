@@ -1,1 +1,1 @@
-# gpa_calculator
+# universal_gpa_calculator
