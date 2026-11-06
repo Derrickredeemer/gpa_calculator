@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Predictor | Universal GPA</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JS/script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Universal GPA</a>
+
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="gpa.html">GPA Calculator</a>
+                <a href="cgpa.html">CGPA Calculator</a>
+                <a href="predictor.html" class="active">GPA Predictor</a>
+                <a href="history.html">History</a>
+            </div>
+        </nav>
+
+
+    </header>
+
+    <main class="container">
+
+
+        <div class="page-heading">
+            <h1>GPA Predictor</h1>
+            <p>Find out the GPA you need to reach your target CGPA.</p>
+        </div>
+
+        <section class="calculator-box">
+
+            <label for="predict-scale">Grading System</label>
+            <select id="predict-scale">
+                <option value="4">4.0 Scale</option>
+                <option value="5">5.0 Scale</option>
+            </select>
+
+            <label for="current-cgpa">Current CGPA</label>
+            <input type="number" id="current-cgpa" min="0" step="any" placeholder="Enter current CGPA">
+
+            <label for="completed-credits">Total Completed Credit Hours</label>
+            <input type="number" id="completed-credits" min="0" step="any" placeholder="Enter completed credits">
+
+            <label for="target-cgpa">Target CGPA</label>
+            <input type="number" id="target-cgpa" min="0" step="any" placeholder="Enter target CGPA">
+
+            <label for="upcoming-credits">Upcoming Credit Hours</label>
+            <input type="number" id="upcoming-credits" min="0.1" step="any" placeholder="Enter upcoming credits">
+
+            <button class="btn" id="calculate-predictor" type="button">
+                Predict Required GPA
+            </button>
+
+            <p id="predictor-message" class="message"></p>
+
+            <div id="predictor-result" class="result hidden"></div>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>© 2026 Universal GPA Calculator.</p>
+    </footer>
+
+</body>
+
+</html>

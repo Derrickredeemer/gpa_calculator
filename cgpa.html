@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGPA Calculator | Universal GPA</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="JS/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Universal GPA</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="gpa.html">GPA Calculator</a>
+                <a href="cgpa.html" class="active">CGPA Calculator</a>
+                <a href="predictor.html">GPA Predictor</a>
+                <a href="history.html">History</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>CGPA Calculator</h1>
+            <p>Calculate your cumulative Grade Point Average.</p>
+        </div>
+
+        <section class="calculator-box">
+            <label for="cgpa-scale">Grading System</label>
+            <select id="cgpa-scale">
+                <option value="4">4.0 Scale</option>
+                <option value="5">5.0 Scale</option>
+            </select>
+
+            <label for="previous-cgpa">Previous CGPA</label>
+            <input type="number" id="previous-cgpa" min="0" step="any" placeholder="Enter previous CGPA" />
+
+            <label for="previous-credits">Previous Total Credit Hours</label>
+            <input type="number" id="previous-credits" min="0" step="any" placeholder="Enter previous credits" />
+
+            <label for="current-gpa">Current Semester GPA</label>
+            <input type="number" id="current-gpa" min="0" step="any" placeholder="Enter current GPA" />
+
+            <label for="current-credits">Current Semester Credit Hours</label>
+            <input type="number" id="current-credits" min="0.1" step="any" placeholder="Enter current credits" />
+
+            <button class="btn" id="calculate-cgpa" type="button">
+                Calculate CGPA
+            </button>
+
+            <p id="cgpa-message" class="message"></p>
+
+            <div id="cgpa-result" class="result hidden"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Universal GPA Calculator.</p>
+    </footer>
+</body>
+
+</html>

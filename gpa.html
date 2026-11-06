@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPA Calculator | Universal GPA</title>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="JS/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Universal GPA</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="gpa.html" class="active">GPA Calculator</a>
+                <a href="cgpa.html">CGPA Calculator</a>
+                <a href="predictor.html">GPA Predictor</a>
+                <a href="history.html">History</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="page-heading">
+            <h1>GPA Calculator</h1>
+            <p>Calculate your semester Grade Point Average.</p>
+        </div>
+
+        <section class="calculator-box">
+            <label for="semester">Semester / Term</label>
+            <input type="text" id="semester" placeholder="e.g. First Semester 2026/2027" />
+
+            <label for="scale">Grading System</label>
+            <select id="scale">
+                <option value="4">4.0 Scale</option>
+                <option value="5">5.0 Scale</option>
+                <option value="custom">Custom Grade Points</option>
+            </select>
+
+            <div id="custom-container" class="hidden">
+                <label for="custom-grades">Custom Grade Points</label>
+                <textarea id="custom-grades" rows="3" placeholder="A=4.0&#10;B=3.0&#10;C=2.0"></textarea>
+                <small>Enter one grade per line in the format GRADE=POINTS.</small>
+            </div>
+
+            <div class="course-heading">
+                <h2>Courses</h2>
+                <p class="muted">
+                    Enter the credit hours and grade points for each course.
+                </p>
+            </div>
+
+            <div id="course-list">
+                <div class="course-row">
+                    <input type="text" class="course-name" placeholder="Course name" />
+                    <input type="number" class="credit" placeholder="Credits" min="0.1" step="any" />
+                    <select class="grade">
+                        <option value="">Grade point</option>
+                    </select>
+                    <button type="button" class="remove-btn">×</button>
+                </div>
+            </div>
+
+            <button type="button" class="btn secondary" id="add-course">
+                + Add Course
+            </button>
+
+            <button type="button" class="btn" id="calculate-gpa">
+                Calculate GPA
+            </button>
+
+            <p id="gpa-message" class="message"></p>
+
+            <div id="gpa-result" class="result hidden"></div>
+
+            <div id="gpa-actions" class="action-row hidden">
+                <button type="button" class="btn" id="save-gpa">Save Result</button>
+                <button type="button" class="btn secondary" id="download-gpa">
+                    Download CSV
+                </button>
+                <button type="button" class="btn secondary" id="print-gpa">
+                    Print
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Universal GPA Calculator.</p>
+    </footer>
+</body>
+
+</html>
