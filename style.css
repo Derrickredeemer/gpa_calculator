@@ -1,10 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {/* ==============================
+/* ==============================
    UNIVERSAL GPA CALCULATOR
    Main Stylesheet
    Developed by A.D. Derrick Redeemer
@@ -115,8 +109,8 @@ textarea {
 
 .badge {
   display: inline-block;
-  background:color: rgb(209, 187, 187);
-  color: #45c4ff;
+  background: rgba(69, 196, 255, 0.15);
+  color: rgb(209, 187, 187);
   padding: 7px 15px;
   border-radius: 30px;
   margin-bottom: 20px;
@@ -159,7 +153,7 @@ textarea {
 }
 
 .page-heading h1 {
-  color: #101d3a;
+  color: #0c52df;
   font-size: 34px;
   margin-bottom: 8px;
 }
@@ -449,6 +443,139 @@ textarea {
   color: #777;
 }
 
+
+
+/* =====================================
+   GPA CALCULATOR POPUP SYSTEM
+===================================== */
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+.popup-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-card {
+    background: #fff;
+    width: 100%;
+    max-width: 430px;
+    padding: 35px 28px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transform: translateY(25px);
+    transition: 0.3s ease;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.popup-overlay.active .popup-card {
+    transform: translateY(0);
+}
+
+.popup-close {
+    position: absolute;
+    top: 13px;
+    right: 17px;
+    border: none;
+    background: #f1f3f8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.popup-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #e8efff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.popup-card h2 {
+    font-size: 25px;
+    margin-bottom: 12px;
+    color: #172554;
+}
+
+.popup-card p {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.popup-btn {
+    width: 100%;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.popup-btn.primary {
+    background: #2563eb;
+    color: white;
+}
+
+.popup-btn.primary:hover {
+    background: #1d4ed8;
+}
+
+.popup-btn.secondary {
+    background: #eef2ff;
+    color: #1e40af;
+}
+
+.popup-btn.secondary:hover {
+    background: #dbeafe;
+}
+
+.popup-btn.danger {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.popup-btn.danger:hover {
+    background: #fecaca;
+}
+
+.popup-message {
+    font-size: 13px;
+    margin-top: 15px;
+    color: #64748b;
+}
+
+
+
 /* ==============================
    FOOTER
 ================================ */
@@ -686,408 +813,13 @@ textarea {
   }
 }
 
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
-  color: #222;
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* Navigation */
-
-.navbar {
-  background: #101d3a;
-  color: white;
-  padding: 16px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  width: 100%;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-.logo {
-  font-size: 23px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  color: #ddd;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: #45c4ff;
-}
-
-/* Homepage Hero */
-
-.hero {
-  min-height: 430px;
-  padding: 85px 10%;
-  background: linear-gradient(120deg, #101d3a, #164c83);
-  color: white;
-  display: flex;
-  align-items: center;
-}
-
-.hero-content {
-  max-width: 760px;
-}
-
-.hero h1 {
-  font-size: clamp(32px, 5vw, 46px);
-  line-height: 1.2;
-  margin: 18px 0;
-}
-
-.hero p {
-  max-width: 650px;
-  color: #e0e9f5;
-  margin-bottom: 25px;
-}
-
-.badge {
-  display: inline-block;
-  background: #1b75b9;
-  padding: 7px 15px;
-  border-radius: 20px;
-  font-size: 13px;
-}
-
-/* Buttons */
-
-.btn {
-  display: inline-block;
-  background: #0879d1;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  text-decoration: none;
-  margin: 8px 5px 8px 0;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #075fa5;
-}
-
-.secondary {
-  background: #e5eff9;
-  color: #12365b;
-}
-
-.secondary:hover {
-  background: #cbdff2;
-}
-
-.danger {
-  background: #d93636;
-}
-
-.danger:hover {
-  background: #a91f1f;
-}
-
-/* General Sections */
-
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 45px auto;
-}
-
-.section-title,
-.page-heading {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.page-heading h1 {
-  font-size: 32px;
-  color: #10264a;
-}
-
-.page-heading p {
-  color: #666;
-}
-
-/* Homepage Cards */
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
-}
-
-.card h3 {
-  color: #12365b;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.card a {
-  color: #0879d1;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.notice {
-  background: #fff8df;
-  border-left: 4px solid #e0a400;
-  padding: 14px 16px;
-  margin-top: 28px;
-  border-radius: 5px;
-  color: #574400;
-}
-
-/* Calculator */
-
-.calculator-box {
-  max-width: 780px;
-  margin: auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin: 15px 0 6px;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccd4df;
-  border-radius: 6px;
-  outline: none;
-  font-size: 14px;
-  background: white;
-  color: #222;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: #0879d1;
-  box-shadow: 0 0 0 2px rgba(8, 121, 209, 0.1);
-}
-
-.course-heading {
-  margin-top: 25px;
-}
-
-.course-heading h2 {
-  color: #12365b;
-}
-
-.muted,
-small {
-  color: #777;
-  font-size: 13px;
-}
-
-.course-row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 40px;
-  gap: 8px;
-  margin: 12px 0;
-  align-items: center;
-}
-
-.remove-btn {
-  height: 43px;
-  border: none;
-  background: #ffe5e5;
-  color: #c00;
-  border-radius: 5px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.result {
-  margin-top: 22px;
-  padding: 20px;
-  background: #e9f5ff;
-  border-left: 5px solid #0879d1;
-  border-radius: 6px;
-  overflow-wrap: anywhere;
-}
-
-.result h2 {
-  color: #075fa5;
-  margin-bottom: 10px;
-}
-
-.result p {
-  margin: 5px 0;
-}
-
-.message {
-  margin-top: 12px;
-  color: #c62828;
-  min-height: 22px;
-}
-
-.action-row {
-  margin-top: 10px;
-}
-
-/* History */
-
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.history-item {
-  background: white;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-}
-
-.history-item h3 {
-  color: #12365b;
-}
-
-.history-item p {
-  color: #555;
-  margin-top: 5px;
-}
-
-.history-courses {
-  margin: 10px 0 0 20px;
-  color: #555;
-}
-
-/* Footer */
-
-footer {
-  text-align: center;
-  background: #101d3a;
-  color: white;
-  padding: 20px;
-  margin-top: 60px;
-}
-
-/* Responsive Design */
-
-@media (max-width: 700px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    gap: 12px;
-  }
-
-  .hero {
-    padding: 60px 7%;
-  }
-
-  .course-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .course-row .course-name {
-    grid-column: 1 / -1;
-  }
-
-  .calculator-box {
-    padding: 20px;
-  }
-
-  .history-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 420px) {
-  .nav-links {
-    gap: 9px;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-  }
-
-  .container {
-    width: 94%;
-  }
-
-  .calculator-box {
-    padding: 16px;
-  }
-}
-
-/* Print */
-
-@media print {
-  .navbar,
-  footer,
-  .btn,
-  .nav-links {
-    display: none !important;
-  }
-
-  body {
-    background: white;
-  }
-
-  .calculator-box,
-  .result {
-    box-shadow: none;
-  }
+/* CALCULATOR POPUP SYSTEM RESPONSIVE */
+@media (max-width: 480px) {
+    .popup-card {
+        padding: 30px 20px;
+    }
+
+    .popup-card h2 {
+        font-size: 22px;
+    }
 }
