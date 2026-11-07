@@ -1231,3 +1231,203 @@ document.getElementById("clear-history")
     }
 
   });
+
+
+
+  /* =====================================
+   GPA CALCULATOR POPUP SYSTEM
+===================================== */
+
+(function () {
+
+    // Create popup structure
+    const popupHTML = `
+        <div class="popup-overlay" id="welcomePopup">
+            <div class="popup-card">
+
+                <button class="popup-close"
+                    data-popup-close="welcomePopup">&times;</button>
+
+                <div class="popup-icon">🎓</div>
+
+                <h2>Welcome to GPA Calculator!</h2>
+
+                <p>
+                    Calculate your GPA and CGPA easily,
+                    accurately and conveniently.
+
+                    Take control of your academic performance
+                    with our simple calculator.
+                </p>
+
+                <div class="popup-buttons">
+
+                    <button class="popup-btn primary"
+                        id="getStarted">
+                        Get Started
+                    </button>
+
+                    <button class="popup-btn secondary"
+                        data-popup-close="welcomePopup">
+                        Explore Website
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="popup-overlay" id="exitPopup">
+            <div class="popup-card">
+
+                <button class="popup-close"
+                    data-popup-close="exitPopup">&times;</button>
+
+                <div class="popup-icon">👋</div>
+
+                <h2>Before You Go!</h2>
+
+                <p>
+                    Thank you for visiting our GPA Calculator.
+
+                    We would love to hear your feedback.
+                    Your suggestions help us improve!
+                </p>
+
+                <div class="popup-buttons">
+
+                    <button class="popup-btn primary"
+                        id="feedbackBtn">
+                        Give Feedback
+                    </button>
+
+                    <button class="popup-btn secondary"
+                        id="stayBtn">
+                        Stay on Website
+                    </button>
+
+                    <button class="popup-btn danger"
+                        id="leaveBtn">
+                        Exit Website
+                    </button>
+
+                </div>
+
+                <div class="popup-message" id="exitMessage"></div>
+
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML("beforeend", popupHTML);
+
+    const welcomePopup = document.getElementById("welcomePopup");
+    const exitPopup = document.getElementById("exitPopup");
+
+    // Show welcome popup on homepage
+    const isHomePage =
+        window.location.pathname.endsWith("/") ||
+        window.location.pathname.endsWith("/index.html");
+
+    if (isHomePage && !sessionStorage.getItem("welcomeShown")) {
+
+        setTimeout(() => {
+            welcomePopup.classList.add("active");
+        }, 800);
+
+        sessionStorage.setItem("welcomeShown", "true");
+    }
+
+    // Close popup buttons
+    document.querySelectorAll("[data-popup-close]").forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            const popup = document.getElementById(
+                this.dataset.popupClose
+            );
+
+            popup.classList.remove("active");
+
+        });
+
+    });
+
+    // Get started
+    document.getElementById("getStarted").addEventListener("click", () => {
+
+        welcomePopup.classList.remove("active");
+
+        const calculator = document.querySelector(
+            "#calculator, .calculator-section, #main-content"
+        );
+
+        if (calculator) {
+            calculator.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+    });
+
+    // Close when clicking outside the card
+    [welcomePopup, exitPopup].forEach(popup => {
+
+        popup.addEventListener("click", function (event) {
+
+            if (event.target === popup) {
+                popup.classList.remove("active");
+            }
+
+        });
+
+    });
+
+    // Exit intent detection (desktop)
+    let exitShown = false;
+
+    document.addEventListener("mouseleave", function (event) {
+
+        if (
+            event.clientY <= 0 &&
+            !exitShown &&
+            !sessionStorage.getItem("exitShown")
+        ) {
+
+            exitShown = true;
+
+            sessionStorage.setItem("exitShown", "true");
+
+            exitPopup.classList.add("active");
+
+        }
+
+    });
+
+    // Stay on website
+    document.getElementById("stayBtn").addEventListener("click", () => {
+
+        exitPopup.classList.remove("active");
+
+    });
+
+    // Give feedback
+    document.getElementById("feedbackBtn").addEventListener("click", () => {
+
+        // Replace with your Google Form link
+        window.open("YOUR_GOOGLE_FORM_LINK", "_blank");
+
+    });
+
+    // Exit website
+    document.getElementById("leaveBtn").addEventListener("click", () => {
+
+        window.close();
+
+        document.getElementById("exitMessage").textContent =
+            "Your browser may not allow websites to close tabs. " +
+            "You can close this tab using your browser's close button.";
+
+    });
+
+})();
