@@ -1,58 +1,105 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic History | Universal GPA</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate and track your GPA, CGPA and CWA with Universal GPA Calculator.">
+  <title>Academic History | Universal GPA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+<nav class="navbar">
+  <a class="logo" href="index.html">Universal GPA</a>
+  <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+  <ul class="nav-links" id="primary-navigation">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="gpa.html">GPA Calculator</a></li>
+    <li><a href="cgpa.html">CGPA Calculator</a></li>
+    <li><a href="cwa.html">CWA Calculator</a></li>
+    <li><a href="predictor.html">GPA Predictor</a></li>
+    <li><a href="history.html" class="active">History</a></li>
+  </ul>
+</nav>
 
-    <header>
-        <nav class="navbar">
-            <a href="index.html" class="logo">Universal GPA</a>
+<main class="container">
+  <div class="page-heading">
+    <h1>Academic History</h1>
+    <p>Review and manage your saved GPA and CWA calculations.</p>
+  </div>
 
+  <div class="history-tabs">
+    <button class="btn secondary active" type="button" data-history-tab="gpa">GPA History</button>
+    <button class="btn secondary" type="button" data-history-tab="cwa">CWA History</button>
+  </div>
 
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="gpa.html">GPA Calculator</a>
-                <a href="cgpa.html">CGPA Calculator</a>
-                <a href="predictor.html">GPA Predictor</a>
-                <a href="history.html" class="active">History</a>
-            </div>
-        </nav>
+  <div class="history-header">
+    <h2 id="history-title" class="section-title">Saved GPA Results</h2>
+    <button class="btn danger" id="clear-history" type="button">Clear GPA History</button>
+  </div>
 
-
-    </header>
-
-    <main class="container">
-
-
-        <div class="page-heading">
-            <h1>Academic History</h1>
-            <p>View your previously saved GPA results.</p>
-        </div>
-
-        <div class="history-header">
-            <h2>Saved GPA Results</h2>
-            <button class="btn danger" id="clear-history" type="button">
-                Clear History
-            </button>
-        </div>
-
-        <div id="history-list"></div>
+  <section id="history-list" aria-live="polite"></section>
+</main>
 
 
-    </main>
+<footer class="footer">
+  <div class="footer-content">
+    <h3>Learn with Derrick-Redeemer</h3>
+    <p>Learn, Create and Grow with Technology.</p>
 
-    <footer>
-        <p>© 2026 Universal GPA Calculator.</p>
-    </footer>
+    <div class="social-links">
 
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@learnwithderrick-redeemer"
+         target="_blank" rel="noopener noreferrer"
+         class="social-link youtube" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/>
+        </svg>
+        <span>YouTube</span>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/profile.php?id=61595889685733"
+         target="_blank" rel="noopener noreferrer"
+         class="social-link facebook" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.4H7.5v3.2h2.8V21h3.2Z"/>
+        </svg>
+        <span>Facebook</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029VbE0t8l0lwgwxCSggQ0W"
+         target="_blank" rel="noopener noreferrer"
+         class="social-link whatsapp" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8.9-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.3.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.4 0-.1-.5-1.3-.7-1.8-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.3c.1.2 1.6 2.4 3.8 3.3.5.2.9.3 1.2.4.5.2 1 .2 1.3.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.5-.3Z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://vm.tiktok.com/ZS9rGQeWpofyy-hXux3"
+         target="_blank" rel="noopener noreferrer"
+         class="social-link tiktok" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M19.6 7.1a5.6 5.6 0 0 1-3.4-1.2v8.2a6.1 6.1 0 1 1-6.1-6.1c.4 0 .8 0 1.2.1v3.4a2.8 2.8 0 1 0 1.7 2.6V2h3.3c.2 2 1.5 3.6 3.3 4v1.1Z"/>
+        </svg>
+        <span>TikTok</span>
+      </a>
+
+    </div>
+
+    <p class="copyright">
+      &copy; 2026 Learn with Derrick-Redeemer.
+      All Rights Reserved.
+    </p>
+
+    <p class="developer-credit">
+      Developed by A.D. Derrick Redeemer
+    </p>
+  </div>
+</footer>
 </body>
-
 </html>
